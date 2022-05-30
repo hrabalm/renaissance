@@ -351,6 +351,16 @@ lazy val scalaStdlibBenchmarks = (project in file("benchmarks/scala-stdlib"))
   )
   .dependsOn(renaissanceCore % "provided")
 
+lazy val graphicsBenchmarks = (project in file("benchmarks/graphics"))
+  .settings(
+    name := "graphics",
+    scalaVersion := scalaVersion213,
+    libraryDependencies ++= Seq(
+      "org.apache.commons" % "commons-math3" % commonsMath3Version
+    )
+  )
+  .dependsOn(renaissanceCore % "provided")
+
 lazy val scalaStmBenchmarks = (project in file("benchmarks/scala-stm"))
   .settings(
     name := "scala-stm",
@@ -408,6 +418,7 @@ val renaissanceBenchmarks: Seq[Project] = Seq(
   scalaDottyBenchmarks,
   scalaSatBenchmarks,
   scalaStdlibBenchmarks,
+  graphicsBenchmarks,
   scalaStmBenchmarks,
   twitterFinagleBenchmarks
 )
